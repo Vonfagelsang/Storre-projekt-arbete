@@ -67,7 +67,6 @@ namespace Luffarschack
                 Console.WriteLine("Ingen vann!");
             }
         //ReadLinen är till för att visa att programmet är slut. Den vill helt enkelt vänta på att annvändaren trycker på någon bokstav så att de själva kan välja när de avslutar proggrammet.
-            Console.ReadLine();
         }
         private static void Brädan()
         {
@@ -131,15 +130,17 @@ namespace Luffarschack
                 else if(spelare >= 10){
                     return -1;
                 }
-                // Den här funktionen skickas tillbacka varje runda som ingen har vunnit, så att spelet loopar tills någon vinner eller förlorar.
+                // Den här funktionen skickas tillbacka varje runda som ingen har vunnit, så att spelet loopar tills någon vinner eller förlorar.Den behövs för att man måste skicka tillbacka ett värde
+                //Annars funkar den inte alls.
                 else{
                     return 0;
                 }
             }
-            // Den här funktionen skickas tillbacka varje runda som ingen har vunnit, så att spelet loopar tills någon vinner eller förlorar.
+            // Den här funktionen skickas tillbacka varje runda som ingen har vunnit, så att spelet loopar tills någon vinner eller förlorar. Den behövs för att man måste skicka tillbacka ett värde
+            //Annars funkar den inte alls.
             else{
                 return 0;
             }
         }
-    }   
+    }
 }
