@@ -4,10 +4,16 @@ namespace Luffarschack
 {
     class Program
     {
-        //Först har jag en array som ska innehålla alla positioner på spelbrädan
-        //annledningen till att jag har å är för att annvändaren inte ska skriva in det, om jag hade noll fanns en chans att annvändaren kanske skulle skriva det, vilket sabbar koden
-        //Jag måste också ha något före '1' eftersom det annars skulle man skriva in 1 och byta ut 2:an på brädan, jag har dock fixat detta med ett fel meddelande, som varnar annvändaren, 
-        //men som inte byter till den andra spelarens tur efter.
+        ///<remarks>
+        ///     Först har jag en array som ska innehålla alla positioner på spelbrädan
+        ///     <see cref="array">
+        ///     <para>
+        ///         Jag har en nolla i arrayen fast man inte kan annvända den, det är för att
+        ///         det annars skulle man skriva in 1 och byta ut 2:an på brädan, jag har dock fixat detta med ett fel meddelande, som varnar annvändaren, 
+        ///         men som inte byter till den andra spelarens tur efter.
+        ///         Innan annvände jag miag av å, eftersom att det skulle vara osanolikt för annvändaren att skriva det, men fel medelandet funkar mycket bättre. 
+        ///     </para>
+        ///</remarks>
         static char[] array = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         //sen har jag en int som kollar vem som spelar, det ska alltid börja med spelare 1
         static int spelare = 1;
@@ -26,9 +32,15 @@ namespace Luffarschack
                 positionval = int.Parse(Console.ReadLine());
                 //Här annvänder jag mig av ett Readline för att få input från annvändaren
                 if(array[positionval] != 'X' && array[positionval] !='O' && positionval != '0'){
-                    //Här kollar den så att det inte står X eller O på brädan redan, om det gör det så skickas den till en WriteLine, där den varnar att man gör fel.
-                    //Jag buggfixade och kom fram till att man kan sätta noll osm ett positionsval och att den kommer att skriva ett varningsmedelande och ökare spelare med 1, 
-                    //så att spelaren som råkar skriva 0 inte förlorar sin tur, vilket de gjorde innan.
+                    ///<remarks>
+                    ///     <para>
+                    ///         Här kollar den så att det inte står X eller O på brädan redan, om det gör det så skickas den till en WriteLine, där den varnar att man gör fel.
+                    ///     </para>
+                    ///     <para>
+                    ///         Jag buggfixade och kom fram till att man kan sätta noll osm ett positionsval och att den kommer att skriva ett varningsmedelande och ökare spelare med 1, 
+                    ///         så att spelaren som råkar skriva 0 inte förlorar sin tur, vilket de gjorde innan.
+                    ///     </para>
+                    ///</remarks>                    
                     if(positionval == 0){
                         Console.WriteLine("0 är inte en fungerande position");
                         array[positionval] = '0';
@@ -75,9 +87,12 @@ namespace Luffarschack
 
 
 
+
         private static void Brädan()
         {
-            //Här har jag ett program som helt enkelt skriver ut hela brädan, den har också arrayerna i sig, så att man ska kunna ändra dem senare, när spelaren väljer positioner. 
+            ///<remarks>
+            ///Här har jag ett program som helt enkelt skriver ut hela brädan, den har också arrayerna i sig, så att man ska kunna ändra dem senare, när spelaren väljer positioner. re
+            ///</remarks>
             Console.WriteLine("     |     |      ");
             Console.WriteLine("  {0}  |  {1}  |  {2}", array[1], array[2], array[3]);
             Console.WriteLine("_____|_____|_____ ");
@@ -87,6 +102,10 @@ namespace Luffarschack
             Console.WriteLine("     |     |      ");
             Console.WriteLine("  {0}  |  {1}  |  {2}", array[7], array[8], array[9]);
         }
+
+
+
+
         //Här är själva vinn kollen, som ska se till att man kan vinna eller förlora spelet. Den kallas alltid i slutet av do-while loopen i main proggrammet. 
          private static int Vinnkoll()
         {
